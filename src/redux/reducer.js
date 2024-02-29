@@ -1,24 +1,26 @@
-import { ADD_TRANSACTION } from "./actions";
+import { ADD_TRANSACTION, DELETE_TRANSACTION } from "./actions";
 
 const initialState = {
-  transactions: [
-    { id: 1, text: "hhhh", amount: 10 },
-    { id: 2, text: "hhsdfh", amount: 30 },
-    { id: 3, text: "hhdfd", amount: 60 },
-    { id: 3, text: "hggg", amount: 77 },
-  ],
+  transactions: [],
 };
 
-const expeseTrackerReducer = (state = initialState, action) => {
+const expenseTrackerReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TRANSACTION:
       return {
         ...state,
         transactions: [action.payload, ...state.transactions],
       };
+    case DELETE_TRANSACTION:
+      return {
+        ...state,
+        transactions: state.transactions.filter(
+          (transaction) => transaction.id !== action.payload
+        ),
+      };
     default:
       return state;
   }
 };
 
-export default expeseTrackerReducer;
+export default expenseTrackerReducer;

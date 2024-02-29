@@ -1,8 +1,12 @@
 export const ADD_TRANSACTION = "ADD_TRANSACTION";
+export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
 
-const addTransaction = (transaction) => ({
-  action: ADD_TRANSACTION,
+export const addTransaction = (transaction) => ({
+  type: ADD_TRANSACTION,
   payload: transaction,
 });
 
-export default addTransaction;
+export const deleteTransaction = (transactionId) => ({
+  type: DELETE_TRANSACTION,
+  payload: transactionId,
+});
